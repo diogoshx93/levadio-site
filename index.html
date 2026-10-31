@@ -58,14 +58,31 @@
       .nav-actions{justify-content:center;flex-wrap:wrap}
       .showreel-caption{overflow-wrap:anywhere}
     }
+
+    .cursor-glow{position:fixed;left:-240px;top:-240px;width:480px;height:480px;z-index:35;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.10),rgba(212,175,55,0) 70%);filter:blur(80px);pointer-events:none;opacity:0;will-change:transform;transition:opacity .3s}
+    .cursor-glow.is-visible{opacity:1}
+    .about-layout{display:grid;gap:40px;align-items:start}
+    .about-copy{max-width:720px}
+    .about-leadership{padding:28px;border-radius:18px;border:1px solid rgba(212,175,55,.18);background:linear-gradient(145deg,rgba(45,90,70,.12),rgba(22,23,27,.76))}
+    .archive-link{color:rgba(255,255,255,.5);white-space:nowrap;transition:color .2s}
+    .menu-link:hover,.archive-link:hover{color:#D4AF37}
+    .menu-link:focus-visible,.archive-link:focus-visible{outline:2px solid #D4AF37;outline-offset:5px;border-radius:2px}
+    @media(min-width:1024px){.about-layout{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:64px}}
+    @media(max-width:1100px){
+      html{scroll-padding-top:160px}
+      .glass-nav{flex-wrap:wrap;border-radius:24px}
+      .desktop-nav{display:flex;order:3;flex-basis:100%;justify-content:center;flex-wrap:wrap;gap:12px 20px;padding:6px 0 2px}
+    }
+    @media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-glow{display:none}}
   </style>
 </head>
 <body class="antialiased">
+  <div class="cursor-glow" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <header class="fixed left-0 right-0 top-0 z-40 px-3 pt-3 sm:px-7 sm:pt-5">
     <nav class="glass-nav mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-full px-4 py-3 sm:px-6" aria-label="Navegação principal" data-i18n-aria="aria.main">
       <a href="#top" class="flex shrink-0 items-center gap-2.5" aria-label="Levadio Collective home"><span class="grid h-8 w-8 place-items-center rounded-full border border-champagne/50 text-champagne"><i data-lucide="mountain" class="h-4 w-4"></i></span><span class="text-[9px] font-bold tracking-[.17em] sm:text-[11px]">LEVADIO <span class="text-white/45">COLLECTIVE</span></span></a>
-      <div class="desktop-nav hidden items-center gap-6 text-[10px] font-medium text-white/65 md:flex"><a href="#pillars" class="menu-link" data-i18n="nav.pillars">Pilares</a><a href="#work" class="menu-link" data-i18n="nav.services">Serviços</a><a href="#contact" class="menu-link" data-i18n="nav.contact">Contacto</a></div>
+      <div class="desktop-nav hidden items-center gap-6 text-[10px] font-medium text-white/65 md:flex"><a href="#pillars" class="menu-link" data-i18n="nav.pillars">Pilares</a><a href="#work" class="menu-link" data-i18n="nav.services">Serviços</a><a href="#about" class="menu-link" data-i18n="nav.about">O Coletivo</a><a href="#contact" class="menu-link" data-i18n="nav.contact">Contacto</a></div>
       <div class="nav-actions flex shrink-0 items-center gap-2 sm:gap-3">
         <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-aria="aria.language"><button type="button" class="lang-choice active" data-language="pt" aria-pressed="true">🇵🇹 PT</button><span class="lang-divider">|</span><button type="button" class="lang-choice" data-language="en" aria-pressed="false">🇬🇧 EN</button></div>
         <button type="button" data-quick-contact class="rounded-full bg-[#eee9dc] px-3.5 py-2.5 text-[9px] font-bold text-[#171719] transition hover:bg-champagne sm:px-5 sm:text-[10px]" data-i18n="nav.quick">Falar Agora ↗</button>
@@ -106,10 +123,25 @@
 
     <section class="px-5 py-10 sm:px-10 sm:py-16" id="proof" aria-labelledby="proof-title"><div class="mx-auto max-w-7xl"><div class="mb-7"><p class="eyebrow mb-3 text-champagne" data-i18n="proof.eyebrow">Proof of reach</p><h2 id="proof-title" class="text-3xl font-medium tracking-[-.05em] sm:text-4xl"><span data-i18n="proof.title1">Stories travel.</span> <span class="serif italic text-white/55" data-i18n="proof.title2">The numbers show it.</span></h2></div><div class="grid gap-3 md:grid-cols-3"><article class="metric-card rounded-2xl"><span class="metric-number">+2M</span><p class="metric-copy" data-i18n="proof.metric1">views across original animation content.</p></article><article class="metric-card rounded-2xl"><span class="metric-number">+1M</span><p class="metric-copy" data-i18n="proof.metric2">views on a creator video featuring original game/IP.</p></article><article class="metric-card rounded-2xl"><span class="metric-number" data-i18n="proof.metric3number">International</span><p class="metric-copy" data-i18n="proof.metric3">clients, collaborators and ten European game startups hosted in Madeira.</p></article></div></div></section>
 
+    <section id="about" class="px-5 py-20 sm:px-10 sm:py-28" aria-labelledby="about-title">
+      <div class="mx-auto max-w-7xl about-layout">
+        <div class="about-copy">
+          <p class="eyebrow mb-4 text-champagne" data-i18n="about.eyebrow">O Coletivo</p>
+          <h2 id="about-title" class="text-4xl font-medium tracking-[-.06em] sm:text-5xl"><span data-i18n="about.title1">Raízes na Madeira.</span><br><span class="serif italic text-white/50" data-i18n="about.title2">Horizontes sem fronteiras.</span></h2>
+          <p class="mt-7 text-sm leading-7 text-white/55" data-i18n="about.body">Somos um estúdio criativo independente sediado na Madeira, com operação remota internacional. Equilibramos criação digital avançada — animação, cinema e direção visual — com sensibilidade ao território e à natureza. Cada projeto nasce desse encontro entre craft, tecnologia e sentido de lugar.</p>
+        </div>
+        <aside class="about-leadership" aria-labelledby="leadership-title">
+          <p class="eyebrow mb-4 text-champagne" data-i18n="about.leadership">Liderança criativa</p>
+          <h3 id="leadership-title" class="serif mb-4 text-3xl italic" data-i18n="about.craft">Direção de arte. Craft multidisciplinar.</h3>
+          <p class="text-xs leading-6 text-white/55" data-i18n="about.leadershipBody">Uma visão criativa próxima em todas as fases: do conceito à imagem em movimento, cruzando narrativa, design e experimentação com atenção ao detalhe.</p>
+        </aside>
+      </div>
+    </section>
+
     <section class="px-5 py-20 sm:px-10 sm:py-28" id="contact"><div class="glass-card relative mx-auto max-w-7xl overflow-hidden rounded-[24px] px-7 py-12 sm:px-14 sm:py-16"><div class="ambient right-[-5%] top-[-75%] h-80 w-96 bg-champagne opacity-[.12]"></div><div class="relative flex flex-col justify-between gap-9 md:flex-row md:items-end"><div><p class="eyebrow mb-5 text-champagne" data-i18n="contact.eyebrow">Um bom sítio para começar</p><h2 class="max-w-3xl text-4xl font-medium tracking-[-.06em] sm:text-6xl"><span data-i18n="contact.title1">Tens um projeto?</span><br><span class="serif italic text-white/50" data-i18n="contact.title2">Vamos dar-lhe forma.</span></h2></div><button type="button" data-proposal-open class="group inline-flex shrink-0 items-center gap-4 rounded-full bg-champagne px-6 py-4 text-xs font-bold text-[#17130a] transition hover:bg-[#ecd16c]"><span data-i18n="contact.cta">Falar Agora</span><span class="transition group-hover:translate-x-1">↗</span></button></div></div></section>
   </main>
 
-  <footer class="px-5 pb-8 pt-6 sm:px-10"><div class="mx-auto flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between"><a href="#top" class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full border border-champagne/40 text-champagne"><i data-lucide="mountain" class="h-3.5 w-3.5"></i></span><span class="text-[9px] font-bold tracking-[.2em]">LEVADIO COLLECTIVE</span></a><p class="text-[10px] text-white/35">Madeira, Portugal · UTC+0</p><div class="flex flex-wrap items-center gap-5"><a class="text-[10px] text-white/55 transition hover:text-champagne" href="mailto:diogosh93@gmail.com">diogosh93@gmail.com</a><a class="text-[10px] text-white/55 transition hover:text-champagne" href="https://www.linkedin.com/in/diogoshx" target="_blank" rel="noreferrer">LinkedIn ↗</a><span class="text-[10px] text-white/30">© <span id="year"></span> Levadio Collective</span></div></div></footer>
+  <footer class="px-5 pb-8 pt-6 sm:px-10"><div class="mx-auto flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between"><a href="#top" class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full border border-champagne/40 text-champagne"><i data-lucide="mountain" class="h-3.5 w-3.5"></i></span><span class="text-[9px] font-bold tracking-[.2em]">LEVADIO COLLECTIVE</span></a><p class="text-[10px] text-white/35">Madeira, Portugal · UTC+0</p><div class="flex flex-wrap items-center gap-5"><a href="#about" class="menu-link" data-i18n="nav.about">O Coletivo</a><a class="text-[10px] text-white/55 transition hover:text-champagne" href="mailto:diogosh93@gmail.com">diogosh93@gmail.com</a><a class="text-[10px] text-white/55 transition hover:text-champagne" href="https://www.linkedin.com/in/diogoshx" target="_blank" rel="noreferrer">LinkedIn ↗</a><span class="text-[10px] text-white/30">© <span id="year"></span> Levadio Collective</span></div></div></footer>
 
   <div id="service-modal" class="overlay fixed inset-0 z-[60] flex items-center justify-center bg-black/75 p-3 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" aria-labelledby="service-modal-title"><div class="dialog-panel dialog-scroll glass-card relative w-full max-w-3xl rounded-[22px] p-5 sm:rounded-[28px] sm:p-8"><button type="button" data-close="service-modal" class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/45 text-white/75 transition hover:border-white/40 hover:text-white" aria-label="Fechar janela" data-i18n-aria="aria.close"><i data-lucide="x" class="h-4 w-4"></i></button><img id="service-modal-image" class="service-detail-image mb-6" src="" alt=""><p id="service-modal-category" class="eyebrow mb-3 text-champagne"></p><h2 id="service-modal-title" class="serif mb-5 pr-10 text-4xl italic sm:text-5xl"></h2><span id="service-modal-author" class="mb-5 inline-flex rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-[9px] font-semibold text-white/75"></span><p id="service-modal-description" class="max-w-2xl text-sm leading-7 text-white/60"></p><h3 class="eyebrow mb-4 mt-7 text-white/40" data-i18n="modal.features">Características do projeto</h3><ul id="service-modal-features" class="mb-8 space-y-3 text-xs leading-6 text-white/65"></ul><button id="service-modal-action" type="button" class="rounded-full bg-champagne px-6 py-4 text-xs font-bold text-[#17130a] transition hover:bg-[#ecd16c]" data-i18n="action.creative">Vamos Criar! ↗</button></div></div>
 
@@ -123,6 +155,7 @@
   <script>
     const i18n={
       pt:{
+        "nav.about":"O Coletivo","about.eyebrow":"O Coletivo","about.title1":"Raízes na Madeira.","about.title2":"Horizontes sem fronteiras.","about.body":"Somos um estúdio criativo independente sediado na Madeira, com operação remota internacional. Equilibramos criação digital avançada — animação, cinema e direção visual — com sensibilidade ao território e à natureza. Cada projeto nasce desse encontro entre craft, tecnologia e sentido de lugar.","about.leadership":"Liderança criativa","about.craft":"Direção de arte. Craft multidisciplinar.","about.leadershipBody":"Uma visão criativa próxima em todas as fases: do conceito à imagem em movimento, cruzando narrativa, design e experimentação com atenção ao detalhe.",
         'doc.title':'Levadio Collective — Estúdio Criativo','aria.main':'Navegação principal','aria.language':'Idioma','aria.filter':'Filtrar projetos','aria.close':'Fechar janela','aria.closeForm':'Fechar formulário','aria.closeQuick':'Fechar contacto rápido','pillar.number01':'Pilar 01','pillar.number02':'Pilar 02','pillar.number03':'Pilar 03','nav.pillars':'Pilares','nav.services':'Trabalho','nav.contact':'Contacto','nav.quick':'Falar Agora ↗',
         'hero.kicker':'Estúdio criativo independente · Madeira, Portugal','reel.eyebrow':'Showreel','reel.title1':'Ideias,','reel.title2':'em movimento.','reel.note':'Um olhar breve sobre o ofício, o ritmo e a atmosfera por trás do trabalho.','reel.caption':'Animação · Cinema · Narrativa visual','reel.line':'Feito para captar atenção. Criado para ficar na memória.','reel.soundOn':'Ativar som','reel.soundOff':'Silenciar vídeo','reel.fullscreen':'Expandir vídeo','project.challenge':'Desafio:','project.deliverables':'Entregáveis:','proof.eyebrow':'Alcance comprovado','proof.title1':'As histórias viajam.','proof.title2':'Os números mostram.','proof.metric1':'visualizações em conteúdo original de animação.','proof.metric2':'visualizações num vídeo de criador sobre um jogo/IP autoral.','proof.metric3number':'Internacional','proof.metric3':'clientes, colaboradores e dez startups europeias de jogos recebidas na Madeira.','hero.line1':'Ideias feitas para','hero.highlight':'mover','hero.line2':'entre mundos.','hero.body':'Juntamos criação digital, paisagens vivas e experiências com intenção — projetos com sentido de lugar e uma visão própria.','hero.cta':'Explorar o coletivo',
         'pillars.eyebrow':'Três mundos, ligados por ideias','pillars.title1':'Escolhe uma direção.','pillars.title2':'Vê onde te leva.','pillars.note':'Blocos retangulares, ideias sem fronteiras. Clica num universo para explorar o trabalho.',
@@ -138,6 +171,7 @@
         'quick.eyebrow':'Contacto rápido','quick.title':'Tens 10 segundos?','quick.note':'Deixa o teu nome e a ideia. O teu programa de email trata do resto.','quick.name':'Nome','quick.namePlaceholder':'Como te chamas?','quick.description':'Descrição curta','quick.descriptionPlaceholder':'Em poucas palavras, o que tens em mente?','quick.submit':'Enviar email ↗','toast.ready':'Mensagem pronta a enviar!','toast.quick':'Mensagem pronta a enviar! O teu programa de email deverá abrir com os dados.'
       },
       en:{
+        "nav.about":"About","about.eyebrow":"The Collective","about.title1":"Rooted in Madeira.","about.title2":"Horizons without borders.","about.body":"We are an independent creative studio based in Madeira, working remotely across borders. We balance advanced digital creation — animation, film and visual direction — with sensitivity to place and nature. Each project grows from that meeting of craft, technology and a sense of place.","about.leadership":"Creative leadership","about.craft":"Art direction. Multidisciplinary craft.","about.leadershipBody":"A hands-on creative vision at every stage: from concept to moving image, bringing together storytelling, design and experimentation with attention to detail.",
         'doc.title':'Levadio Collective — Creative Studio','aria.main':'Main navigation','aria.language':'Language','aria.filter':'Filter selected work','aria.close':'Close dialog','aria.closeForm':'Close form','aria.closeQuick':'Close quick contact','pillar.number01':'Pillar 01','pillar.number02':'Pillar 02','pillar.number03':'Pillar 03','nav.pillars':'Pillars','nav.services':'Selected Work','nav.contact':'Contact','nav.quick':'Get in Touch ↗',
         'hero.kicker':'Independent creative studio · Madeira, Portugal','reel.eyebrow':'Showreel','reel.title1':'Ideas,','reel.title2':'in motion.','reel.note':'A quick look at the craft, rhythm and atmosphere behind the work.','reel.caption':'Animation · Film · Visual storytelling','reel.line':'Made to hold attention. Built to stay with you.','reel.soundOn':'Turn sound on','reel.soundOff':'Mute video','reel.fullscreen':'Expand video','project.challenge':'Challenge:','project.deliverables':'Deliverables:','proof.eyebrow':'Proof of reach','proof.title1':'Stories travel.','proof.title2':'The numbers show it.','proof.metric1':'views across original animation content.','proof.metric2':'views on a creator video featuring original game/IP.','proof.metric3number':'International','proof.metric3':'clients, collaborators and ten European game startups hosted in Madeira.','hero.line1':'Ideas made to','hero.highlight':'move','hero.line2':'between worlds.','hero.body':'We bring digital craft, living landscapes and considered experiences together — shaping projects with a sense of place and a point of view.','hero.cta':'Explore the collective',
         'pillars.eyebrow':'Three worlds, connected by ideas','pillars.title1':'Choose a direction.','pillars.title2':'See where it leads.','pillars.note':'Clean rectangular panels, ideas without borders. Pick a universe to explore selected work.',
@@ -164,6 +198,38 @@
       {"id": "refugio-atlantico", "universe": "nature", "category": {"pt": "Conceito / Natureza & Turismo", "en": "Concept / Nature & Tourism"}, "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80", "alt": {"pt": "Paisagem natural junto à água, referência visual para o conceito", "en": "Natural waterside landscape, a visual reference for the concept"}, "icon": "trees", "author": {"pt": "Projeto de conceito / Não construído", "en": "Concept project / Unbuilt"}, "title": {"pt": "Refúgio do Atlântico — Spatial Concept & Tourism Storytelling", "en": "Refúgio do Atlântico — Spatial Concept & Tourism Storytelling"}, "short": {"pt": "Imaginar um refúgio turístico que liga arquitetura, paisagem e narrativa local.", "en": "Imagine a tourism retreat connecting architecture, landscape and local storytelling."}, "deliverables": {"pt": "Conceito espacial · Moodboard · Narrativa turística", "en": "Spatial concept · Moodboard · Tourism storytelling"}, "description": {"pt": "Estudo conceptual não construído para um refúgio no Atlântico. Explora espaços integrados na paisagem e uma narrativa turística inspirada na identidade insular. As imagens são referências de atmosfera, não fotografias de uma obra realizada.", "en": "An unbuilt concept study for an Atlantic retreat. It explores spaces integrated into the landscape and tourism storytelling inspired by island identity. Images are atmosphere references, not photographs of a completed building."}, "features": {"pt": ["Conceito espacial integrado na paisagem.", "Paleta de materiais e referências de atmosfera.", "Narrativa turística com sentido de lugar."], "en": ["Spatial concept integrated into the landscape.", "Material palette and atmosphere references.", "Tourism storytelling with a sense of place."]}, "action": "nature"}
     ];
     document.addEventListener('DOMContentLoaded',()=>{
+
+      // Run only while a fine mouse pointer is moving; sleep once settled.
+      const glow=document.querySelector('.cursor-glow');
+      const glowMedia=matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+      let glowFrame=0,glowX=0,glowY=0,targetX=0,targetY=0,lastGlowTime=0,glowActive=false;
+      function stopGlow(){cancelAnimationFrame(glowFrame);glowFrame=0;lastGlowTime=0;glowActive=false;glow.classList.remove('is-visible')}
+      function drawGlow(time){
+        glowFrame=0;
+        const delta=lastGlowTime?Math.min(time-lastGlowTime,64):16.67;
+        lastGlowTime=time;
+        const ease=1-Math.exp(-delta/70);
+        glowX+=(targetX-glowX)*ease;glowY+=(targetY-glowY)*ease;
+        const settled=Math.abs(targetX-glowX)+Math.abs(targetY-glowY)<.2;
+        if(settled){glowX=targetX;glowY=targetY;lastGlowTime=0}
+        glow.style.transform='translate3d('+glowX+'px,'+glowY+'px,0)';
+        if(!settled)glowFrame=requestAnimationFrame(drawGlow);
+      }
+      function moveGlow(event){
+        if(event.pointerType!=='mouse'||document.hidden)return;
+        targetX=event.clientX;targetY=event.clientY;
+        if(!glowActive){glowX=targetX;glowY=targetY;glowActive=true;glow.classList.add('is-visible')}
+        if(!glowFrame)glowFrame=requestAnimationFrame(drawGlow);
+      }
+      function configureGlow(){
+        stopGlow();window.removeEventListener('pointermove',moveGlow);
+        if(glowMedia.matches)window.addEventListener('pointermove',moveGlow,{passive:true});
+      }
+      glowMedia.addEventListener('change',configureGlow);
+      document.documentElement.addEventListener('pointerleave',stopGlow);
+      window.addEventListener('blur',stopGlow);
+      document.addEventListener('visibilitychange',()=>{if(document.hidden)stopGlow()});
+      configureGlow();
       if(window.lucide)lucide.createIcons();
       document.getElementById('year').textContent=new Date().getFullYear();
       const reelVideo=document.getElementById('showreelVideo'),soundButton=document.getElementById('showreelSound'),soundIcon=document.getElementById('showreelSoundIcon');
